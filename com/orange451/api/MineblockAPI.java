@@ -8,7 +8,7 @@ import com.orange451.game.mainGame;
 public class MineblockAPI
 {
 
-      private List<?> classes = new ArrayList<>();
+      private List<Object> classes = new ArrayList<Object>();
       private String author;
       private String modName;
       private String modVersion;
@@ -23,11 +23,15 @@ public class MineblockAPI
          setupMod();
       }
       
-      public void addClassToDirectory(Class class)
+      public void addClassToDirectory(Object class)
       {
+          try{
           if(!classes.contains(class))
           {
             classes.add(class);
+          }
+          } catch (ClassNotFoundException ex){
+                ex.printStackTrace();
           }
       }
 
