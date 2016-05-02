@@ -45,6 +45,20 @@ public class MineblockAPI
         game.getFrame().setGameVersionInfo("Mineblock 2D Modded: " + modName + " " + modVersion);
       }
       
+      
+      
+      }
+      
+      class loadClasses implements ClassLoader
+      {
+            
+            public loadClasses(Object object)
+            {
+                  super(object);
+                  //TODO: Load the classes put in the script
+            }
+             
+      }
       }
 
 }
