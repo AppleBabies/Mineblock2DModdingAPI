@@ -8,7 +8,7 @@ import com.orange451.game.mainGame;
 public class MineblockAPI
 {
 
-      private List<Object> classes = new ArrayList<Object>();
+      private List<Class<?>> classes = new ArrayList<Class<?>>();
       private String author;
       private String modName;
       private String modVersion;
@@ -23,7 +23,26 @@ public class MineblockAPI
          setupMod();
       }
       
-      public void addClassToDirectory(Object class)
+      private mainGame game()
+      {
+         return new mainGame(new CustomCanvas());
+      }
+      
+      public PlayerController getPlayer()
+      {
+            return game().getPlayer();
+      }
+      
+      public int getWorldId()
+      {
+            try{
+            return getPlayer().getWorldId();
+            catch(OutOfBoundsException e){
+                  e.printStackTrace();
+            }
+      }
+
+      public void addClassToDirectory(Class<?> class)
       {
           try{
           if(!classes.contains(class))
@@ -38,11 +57,10 @@ public class MineblockAPI
       private void setupMod()
       {
       
-      mainGame game = new mainGame();
       if(!Main.isApplet())
       {
-        game.getFrame().setTitle("Mineblock 2D Modded: " + modName + " " + modVersion);
-        game.getFrame().setGameVersionInfo("Mineblock 2D Modded: " + modName + " " + modVersion);
+        game().getFrame().setTitle("Mineblock 2D Modded: " + modName + " " + modVersion);
+        game().getFrame().setGameVersionInfo("Mineblock 2D Modded: " + modName + " " + modVersion);
       }
       
       
